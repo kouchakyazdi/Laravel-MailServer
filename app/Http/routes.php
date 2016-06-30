@@ -16,15 +16,18 @@ Route::get('/', function () {
 });
 
 Route::get('/aboutUs', 'PagesController@aboutUs');
-
-Route::get('/users', 'UsersController@showAll');
-
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
+Route::get('/create', 'PagesController@create');
+Route::post('/create', 'PagesController@save');
+Route::get('/allMails', 'PagesController@allMails');
+Route::get('/users', 'UsersController@showAllUsers');
+Route::post('/users', 'UsersController@addToContact');
 
 Route::auth();
+// here inbox is the same as dashboard (it's for authenticated users)
+Route::get('/inbox', 'InboxController@inbox');
+Route::get('/compose', 'InboxController@compose');
+Route::get('/compose/sendSuccessfull', 'InboxController@sendSuccessfull');
+Route::post('/compose', 'InboxController@send');
+Route::get('/profile', 'InboxController@showProfile');
+Route::post('/profile', 'InboxController@saveProfile');
 
-Route::get('/home', 'HomeController@index');

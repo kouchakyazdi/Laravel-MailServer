@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Email;
+use Request;
 use App\Http\Requests;
+
+//use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    //
+
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
 
     function aboutUs()
     {
@@ -19,4 +25,20 @@ class PagesController extends Controller
         return view('pages.aboutUs', compact('name', 'family'));
     }
 
+    function allMails()
+    {
+        $emails = Email::all();
+        return view('pages.allMails', compact('emails'));
+    }
+
+    function create()
+    {
+        return view('pages.create');
+    }
+
+    function save()
+    {
+        $request = Request::all();
+        return $request;
+    }
 }

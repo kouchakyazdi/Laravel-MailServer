@@ -14,10 +14,12 @@ class CreateEmailTable extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('body');
+            $table->string('from');
+            $table->string('to');
+            $table->string('subject');
+            $table->text('text');
+            $table->binary('attachment');
             $table->timestamps();
-            $table->timestamp('published_at');
         });
     }
 
